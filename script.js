@@ -78,6 +78,13 @@ backHomeBtn.addEventListener('click', () => {
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    listNotes.forEach((note) => {
+        if (note.title === titleChatHeader.textContent) {
+            note.notes.push(chatInput.value);
+            localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+        }
+    });
+
     const msg = {
         content: chatInput.value
     }
