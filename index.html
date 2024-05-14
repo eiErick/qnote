@@ -17,19 +17,35 @@
     </div>
 
     <div class="home">
-        <div class="notes-container">
-        </div>
+        <div class="notes-container"></div>
         <button class="note-create-btn btn">+</button>
     </div>
 
     <div class="notes-creation-menu">
         <p class="notes-creation-menu-title">New note</p>
-        <input type="text" class="note-title-input" placeholder="Note name..." autofocus>
+        <input type="text" class="note-title-input" placeholder="Note name...">
         <div class="btns">
             <button class="cancel-new-note-btn btn">Cancel</button>
             <button class="create-new-note-btn btn">Create</button>
         </div>
     </div>
+
+        <div class="note-display">
+            <div class="chat-header">
+                <button class="back-home-btn">
+                    <img src="img/back-left.svg" alt="back left">
+                </button>
+                <p class="title-chat-header"></p>
+            </div>
+
+            <section class="chat-msg">
+            </section>
+
+            <form class="chat-form">
+                <input type="text" class="chat-input" placeholder="Write your note..." required />
+                <button type="submit" class="chat-btn btn">+</button>
+            </form>
+        </div>
     <script src="theme.js"></script>
     <script src="script.js"></script>
 </body>

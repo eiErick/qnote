@@ -8,12 +8,14 @@
 
 .dark {
     --bg-color: #1e1e1e;
+    --pg-color: #303030;
     --text-color: #ffffff;
     --shadow-color:#ffffff26;
 }
 
 .light {
     --bg-color: #ffffff;
+    --pg-color: #ebebeb;
     --text-color: #000000;
     --shadow-color:#00000026;
 }
@@ -151,4 +153,92 @@ body {
     padding: 1rem;
     font-size: 1.2rem;
     margin: 0 .4rem 0 .4rem;
+}
+
+/* NOTE DISPLAY */
+
+.note-display {
+    display: none;
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note-display .chat-header {
+    position: fixed;
+    top: 0rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--pg-color);
+    height: 4.2rem;
+    width: 100%;
+    padding: .5rem;
+}
+
+.note-display .back-home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.2rem;
+    width: 1.8rem;
+    cursor: pointer;
+    background-color: transparent;
+    margin: 0 2rem 0 1rem;
+}
+
+.note-display .title-chat-header {
+    font-size: 1.4rem;
+}
+
+.note-display .chat-msg {
+    flex-grow: 1;
+    padding: 5rem 1rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.note-display .chat-form {
+    position: fixed;
+    bottom: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: .5rem 0;
+    background-color: var(--pg-color);
+}
+
+.note-display .chat-input {
+    display: flex;
+    width: 80%;
+    height: 3rem;
+    padding: 1rem;
+    font-size: 1.1em;
+    color: black;
+    border-radius: var(--radius);
+    box-shadow: .1rem .1rem .6rem var(--shadow-color);
+}
+
+.note-display .chat-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .8rem;
+    margin-left: .5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+}
+
+.note-display .msg {
+    background-color: var(--primary-color);
+    max-width: 50%;
+    border-radius: var(--radius);
+    align-self: flex-end;
+    padding: .5rem;
+    font-size: 1.1rem;
+    margin: .2rem 0;
 }
