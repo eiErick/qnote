@@ -63,6 +63,13 @@ createNewNoteBtn.addEventListener('click', () => {
         return;
     }
 
+    const nameValid = checkName(noteTitleInput.value);
+
+    if (!nameValid) {
+        alert('warning', 'The name already exists!');
+        return;
+    }
+
     listNotes.push({'title': noteTitleInput.value, 'notes': []});
     localStorage.setItem('savedNotes', JSON.stringify(listNotes));
 
@@ -138,4 +145,14 @@ function createMessageEmenent(content) {
     div.classList.add('msg');
     div.innerHTML = content;
     return div;
+}
+
+function checkName(name) {
+    let nameValid = true;
+    listNotes.forEach((note) => {
+        if (name === note.title) {
+            nameValid = false;
+        }
+    });
+    return nameValid;
 }
