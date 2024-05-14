@@ -2,7 +2,7 @@
     font-size: 16px;
     --primary-color: #3584E4;
     --primary-color-hover: #72A9EC;
-    --radius: 1rem;
+    --radius: .6rem;
     --transition: .3s
 }
 
