@@ -273,6 +273,10 @@ body {
 }
 
 @media screen and (max-width: 500px) {
+    .alert {
+        width: 20rem;
+    }
+
     .home .note-create-btn {
         width: 3rem;
         height: 3rem;
