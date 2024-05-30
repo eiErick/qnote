@@ -1,0 +1,34 @@
+{
+    "name": "qnote",
+    "version": "1.0",
+    "description": "A simple app of annotation",
+    "main": "main.js",
+    "scripts": {
+      "start": "electron .",
+      "build": "electron-builder"
+    },
+    "build": {
+      "icon": "./build/icon/",
+      "productName": "qnote",
+      "linux": {
+        "target": [
+          "snap",
+          "AppImage"
+        ]
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com/eiErick/qnote.git"
+    },
+    "author": "Érick",
+    "license": "GPL-3.0-only",
+    "bugs": {
+      "url": "https://github.com/eiErick/qnote/issues"
+    },
+    "homepage": "https://github.com/eiErick/qnote#readme",
+    "devDependencies": {
+      "electron": "^29.1.5",
+      "electron-builder": "^24.13.3"
+    }
+}
