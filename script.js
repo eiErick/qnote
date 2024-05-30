@@ -140,6 +140,41 @@ chatForm.addEventListener('submit', (event) => {
     chatInput.value = '';
 });
 
+document.addEventListener('contextmenu', (e) => {
+    if (e.target.classList[0] === 'msg') {
+        e.preventDefault();
+        rmenu.style.display = 'flex';
+        rmenu.style.top = `${event.clientY}px`;
+        rmenu.style.left = `${event.clientX - 120}px`;
+
+        document.addEventListener('click', () => {
+            rmenu.style.display = 'none';
+        });
+        
+        deleteBtn.addEventListener('click', () => {
+            const title = document.querySelector('.title-chat-header');
+            let index = 0;
+            
+            for (let i = 0; i < listNotes.length; i++) {
+                if (listNotes[i].title === title.textContent) {
+                    index = i;
+                    i = listNotes.length + 1;
+                }
+            }
+
+            listNotes[index].notes = [];
+            e.target.remove();
+
+            const msgs = document.querySelectorAll('.msg');
+            for (let i = 0; i < msgs.length; i++) {
+                listNotes[index].notes.push(msgs[i].textContent);
+            }
+
+            localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+        });
+    }
+});
+
 function noteMaker(title) {
     const div = document.createElement('div');
     const pTitle = document.createElement('p');
