@@ -17,6 +17,9 @@ const chatForm = document.querySelector('.chat-form');
 const chatInput = document.querySelector('.chat-input');
 const chatMsg = document.querySelector('.chat-msg');
 
+const rmenu = document.querySelector('.rmenu');
+const deleteBtn = document.querySelector('.delete-btn');
+
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
 
@@ -42,6 +45,36 @@ notes.forEach(noteTitle => {
                     printMsg(text);
                 });
             }
+        });
+
+    });
+});
+
+notes.forEach((note) => {
+    note.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+
+        rmenu.style.display = 'flex';
+        rmenu.style.top = `${event.clientY}px`;
+        rmenu.style.left = `${event.clientX}px`;
+        
+        document.addEventListener('click', () => {
+            rmenu.style.display = 'none';
+        });
+
+        deleteBtn.addEventListener('click', () => {
+            listNotes.forEach((n) => {
+                if (note.childNodes[0].textContent === n.title) {
+                    note.remove();
+
+                    for (let i = 0; i < listNotes.length; i++) {
+                        if (listNotes[i].title === n.title) listNotes.splice(i, 1);
+                        localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+                    }
+
+                }
+            });
+
         });
 
     });
