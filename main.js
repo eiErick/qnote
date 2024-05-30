@@ -7,7 +7,7 @@ function createWindow () {
         minWidth: 300,
         minHeight: 450,
     });
-    win.loadFile("index.html");
+    win.loadFile('index.html');
     win.setMenu(null);
 }
 
