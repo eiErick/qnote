@@ -80,6 +80,17 @@ body {
     font-weight: bold;
 }
 
+/* THERE ARE NO SAVED NOTES MSG */
+
+.there-are-no-saved-notes-msg {
+    position: absolute;
+    font-size: 2rem;
+    transform: translateX(-50%);
+    transform: translateY(-50);
+    top: 50%;
+    left: 50%;
+}
+
 /* HOME */
 
 .home {
