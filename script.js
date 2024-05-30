@@ -221,7 +221,6 @@ function printBanner() {
     if (window.location.href === "https://eierick.github.io/qnote/") {
         const banner = document.querySelector(".banner");
         if (navigator.platform !== "Linux x86_64") return;
-        if (navigator.oscpu !== "Linux x86_64") return;
         banner.style.display = "flex";
     }
 }
