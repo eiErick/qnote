@@ -34,7 +34,7 @@ if (listNotes.length === 0) {
     const text = document.createElement('p');
     text.textContent = 'There are no saved notes :/';
     text.classList = 'there-are-no-saved-notes-msg';
-    document.body.appendChild(text);
+    home.appendChild(text);
 }
 
 const notes = document.querySelectorAll('.note');
