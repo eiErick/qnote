@@ -150,7 +150,9 @@ body {
 }
 
 .home .notes-container .note {
-    border-bottom: .1rem solid rgba(255, 255, 255, 0.2);
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    margin-bottom: .5rem;
     padding: .6rem;
     cursor: pointer;
     height: 4rem;
