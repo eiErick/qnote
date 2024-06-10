@@ -106,13 +106,14 @@ body {
 /* HEADER */
 
 .header {
-    padding: .2rem;
+    height: 3.2rem;
     display: flex;
-    border-bottom: .1rem solid rgba(255, 255, 255, 0.2);
+    /* border-bottom: .1rem solid rgba(255, 255, 255, 0.2); */
 }
 
 .header .brand-header {
     display: flex;
+    align-items: center;
     cursor: pointer;
 }
 
@@ -122,8 +123,12 @@ body {
 
 .header .qnote-img {
     margin: 0 .4rem;
-    height: 3rem;
-    width: 3rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+.header-title {
+    transform: translateY(-10%);
 }
 
 /* HOME */
@@ -190,7 +195,7 @@ body {
 
 .notes-creation-menu .note-title-input {
     background-color: transparent;
-    border-bottom: .1rem solid rgba(255, 255, 255, 0.4);
+    border-bottom: .1rem solid rgba(255, 255, 255, 0.2);
     font-size: 1rem;
     color: white;
     padding: .8rem;
@@ -219,8 +224,8 @@ body {
     top: 0rem;
     display: flex;
     align-items: center;
-    background-color: var(--pg-color);
-    height: 4.2rem;
+    height: 3.2rem;
+    background-color: var(--bg-color);
     width: 100%;
     padding: .5rem;
 }
@@ -259,14 +264,16 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 3.2rem;
     padding: .5rem 0;
-    background-color: var(--pg-color);
+    background-color: var(--bg-color);
 }
 
 .note-display .chat-input {
     display: flex;
     width: 80%;
-    height: 3rem;
+    max-width: 60rem;
+    height: 2.6rem;
     padding: 1rem;
     font-size: 1.1em;
     color: black;
@@ -280,8 +287,8 @@ body {
     align-items: center;
     padding: .8rem;
     margin-left: .5rem;
-    width: 3rem;
-    height: 3rem;
+    width: 2.6rem;
+    height: 2.6rem;
     font-size: 2rem;
 }
 

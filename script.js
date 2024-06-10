@@ -1,6 +1,7 @@
 const alertHTML = document.querySelector('.alert');
 const alertCloseBtn = document.querySelector('.alert-close-btn');
 
+const header = document.querySelector('.header');
 const brandHeader = document.querySelector('.brand-header');
 
 const home = document.querySelector('.home');
@@ -46,9 +47,9 @@ const notes = document.querySelectorAll('.note');
 notes.forEach(noteTitle => {
     noteTitle.addEventListener('click', () => {
         titleChatHeader.textContent = noteTitle.childNodes[0].textContent;
-        chatMsg.innerHTML = ''
-        home.style.display = 'none';
-        noteDisplay.style.display = 'flex';
+        chatMsg.innerHTML = '';
+        printScreen(noteDisplay, 'flex');
+        header.style.display = 'none';
 
         listNotes.forEach((note) => {
             if (note.title === noteTitle.childNodes[0].textContent) {
@@ -124,7 +125,8 @@ createNewNoteBtn.addEventListener('click', () => {
 });
 
 backHomeBtn.addEventListener('click', () => {
-    printScreen(home, 'block')
+    printScreen(home, 'block');
+    header.style.display = 'flex';
 });
 
 chatForm.addEventListener('submit', (event) => {
