@@ -103,6 +103,29 @@ body {
     left: 50%;
 }
 
+/* HEADER */
+
+.header {
+    padding: .2rem;
+    display: flex;
+    border-bottom: .1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.header .brand-header {
+    display: flex;
+    cursor: pointer;
+}
+
+.header .brand-header:hover {
+    text-decoration: underline;
+}
+
+.header .qnote-img {
+    margin: 0 .4rem;
+    height: 3rem;
+    width: 3rem;
+}
+
 /* HOME */
 
 .home {

@@ -1,6 +1,8 @@
 const alertHTML = document.querySelector('.alert');
 const alertCloseBtn = document.querySelector('.alert-close-btn');
 
+const brandHeader = document.querySelector('.brand-header');
+
 const home = document.querySelector('.home');
 const notesContainer = document.querySelector('.notes-container');
 const noteCreateBtn = document.querySelector('.note-create-btn');
@@ -89,14 +91,16 @@ notes.forEach((note) => {
     });
 });
 
+brandHeader.addEventListener('click', () => {
+    printScreen(home, 'block');
+});
+
 noteCreateBtn.addEventListener('click', () => {
-    home.style.display = 'none';
-    notesCreationMenu.style.display = 'flex';
+    printScreen(notesCreationMenu, 'flex');
 });
 
 cancelNewNoteBtn.addEventListener('click', () => {
-    home.style.display = 'block';
-    notesCreationMenu.style.display = 'none';
+    printScreen(home, 'block');
 });
 
 createNewNoteBtn.addEventListener('click', () => {
@@ -120,8 +124,7 @@ createNewNoteBtn.addEventListener('click', () => {
 });
 
 backHomeBtn.addEventListener('click', () => {
-    home.style.display = 'block';
-    noteDisplay.style.display = 'none';
+    printScreen(home, 'block')
 });
 
 chatForm.addEventListener('submit', (event) => {
@@ -240,4 +243,11 @@ function checkName(name) {
         }
     });
     return nameValid;
+}
+
+function printScreen(element, show) {
+    home.style.display = 'none';
+    notesCreationMenu.style.display = 'none';
+    noteDisplay.style.display = 'none';
+    element.style.display = show;
 }
