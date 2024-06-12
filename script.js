@@ -3,9 +3,11 @@ const alertCloseBtn = document.querySelector('.alert-close-btn');
 
 const header = document.querySelector('.header');
 const brandHeader = document.querySelector('.brand-header');
+const searchBar = document.querySelector('.search-bar');
 
 const home = document.querySelector('.home');
 const notesContainer = document.querySelector('.notes-container');
+const searchMsg = document.querySelector('.search-msg');
 const noteCreateBtn = document.querySelector('.note-create-btn');
 
 const notesCreationMenu = document.querySelector('.notes-creation-menu');
@@ -41,6 +43,8 @@ if (listNotes.length === 0) {
     text.classList = 'there-are-no-saved-notes-msg';
     home.appendChild(text);
 }
+
+if (window.innerWidth <= 500) brandHeader.style.display = 'none';
 
 const notes = document.querySelectorAll('.note');
 
@@ -93,7 +97,14 @@ notes.forEach((note) => {
 });
 
 brandHeader.addEventListener('click', () => {
-    printScreen(home, 'block');
+    printScreen(home, 'flex');
+});
+
+searchBar.addEventListener('input', () => {
+    notesContainer.childNodes.forEach((note) => {
+        note.style.display = 'none';
+        if (searchBar.value === note.firstChild.innerHTML.substr(0, searchBar.value.length)) note.style.display = 'flex';
+    });
 });
 
 noteCreateBtn.addEventListener('click', () => {
