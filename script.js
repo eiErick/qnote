@@ -107,10 +107,12 @@ searchBar.addEventListener('input', () => {
 
 noteCreateBtn.addEventListener('click', () => {
     printScreen(notesCreationMenu, 'flex');
+    header.style.display = 'none';
 });
 
 cancelNewNoteBtn.addEventListener('click', () => {
     printScreen(home, 'block');
+    header.style.display = 'flex';
 });
 
 createNewNoteBtn.addEventListener('click', () => {
