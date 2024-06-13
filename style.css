@@ -1,7 +1,7 @@
 :root {
     font-size: 16px;
-    --primary-color: #3584E4;
-    --primary-color-hover: #72A9EC;
+    /* --primary-color: #3584E4; */
+    /* --primary-color-hover: #72A9EC; */
     --radius: .6rem;
     --transition: .3s
 }
@@ -18,6 +18,26 @@
     --pg-color: #ebebeb;
     --text-color: #000000;
     --shadow-color:#00000026;
+}
+
+.red {
+    --primary-color: #ff0000;
+    --primary-color-hover: #ff4d4d;
+}
+
+.blue {
+    --primary-color: #3584e4;
+    --primary-color-hover: #438de6;
+}
+
+.purple {
+    --primary-color: #8756ec;
+    --primary-color-hover: #996fef;
+}
+
+.green {
+    --primary-color: #04875b;
+    --primary-color-hover: #2a9974;
 }
 
 * {
@@ -156,6 +176,22 @@ body {
     width: 2.4rem;
     height: 2.4rem;
     font-size: 2rem;
+}
+
+.home .settings-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: .4rem;
+    right: 3.2rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 2rem;
+}
+
+.home .settings-icon {
+    height: 1.5rem;
 }
 
 .home .notes-container {
@@ -322,6 +358,155 @@ body {
     margin: .2rem 0;
 }
 
+/* SETTINGS */
+
+.settings-screen {
+    display: none;
+}
+
+.settings-screen .settings-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 12rem;
+    background-color: var(--pg-color);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    border-right: .1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.settings-screen .options {
+    text-align: center;
+    cursor: pointer;
+    padding: .5rem 0;
+    width: 95%;
+    border-radius: var(--radius);
+    margin-bottom: .2rem;
+}
+
+.settings-screen .options:hover {
+    background-color: var(--shadow-color);
+}
+
+.settings-screen .option-active {
+    background-color: var(--shadow-color);
+}
+
+.settings-screen .display-settings {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 12rem;
+}
+
+.settings-screen .context {
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
+    margin-top: 1.5rem;
+}
+
+.settings-screen .style-menu {
+    font-size: 1rem;
+    border-radius: var(--radius);
+    padding: .5rem;
+    background-color: transparent;
+    width: 15rem;
+    cursor: pointer;
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.settings-screen .exit-settings-screen {
+    position: fixed;
+    transform: translate(-50%, -110%);
+    top: 100%;
+    left: 6rem;
+    width: 6rem;
+}
+
+.colors {
+    padding: .4rem 1rem;
+    border-radius: 100px;
+    cursor: pointer;
+    margin-right: .5rem;
+}
+
+.active-color {
+    border: .2rem solid rgba(255, 255, 255, 0.8);
+}
+
+.settings-screen .color-red {
+    background-color: #ff0000;
+}
+
+.settings-screen .color-purple {
+    background-color: #8756ec;
+}
+
+.settings-screen .color-blue {
+    background-color: #3584e4;
+}
+
+.settings-screen .color-green {
+    background-color: #04875b;
+}
+
+.display-data {
+    display: none;
+    height: 100vh;
+}
+
+.data-export {
+    position: absolute;
+    cursor: pointer;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: .5rem 4.5rem .5rem 4.5rem;
+    border-radius: var(--radius);
+    transform: translateX(-50%);
+    top: 1rem;
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.data-export:hover {
+    background-color: var(--shadow-color);
+}
+
+.display-about {
+    display: none;
+    position: relative;
+}
+
+.app-img {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 25%;
+}
+
+.app-name {
+    margin-top: 17rem;
+    text-align: center;
+    padding: .5 10rem;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.legal-text {
+    max-width: 15rem;
+    text-align: justify;
+    font-size: .8rem;
+}
+
+.settings-screen .exit-settings-icon {
+    margin-right: .5rem;
+    transform: translateY(10%);
+}
+
 /* RMENU */
 
 .rmenu{
@@ -359,6 +544,15 @@ body {
         position: fixed;
         transform: translateY(-115%);
         top: 100%;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .home .settings-btn {
+        position: fixed;
+        transform: translateY(-115%);
+        top: 100%;
+        right: 3.8rem;
         width: 3rem;
         height: 3rem;
     }

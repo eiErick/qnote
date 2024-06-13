@@ -8,6 +8,7 @@ const searchBar = document.querySelector('.search-bar');
 const home = document.querySelector('.home');
 const notesContainer = document.querySelector('.notes-container');
 const searchMsg = document.querySelector('.search-msg');
+const settingsBtn = document.querySelector('.settings-btn');
 const noteCreateBtn = document.querySelector('.note-create-btn');
 
 const notesCreationMenu = document.querySelector('.notes-creation-menu');
@@ -22,6 +23,16 @@ const chatForm = document.querySelector('.chat-form');
 const chatInput = document.querySelector('.chat-input');
 const chatMsg = document.querySelector('.chat-msg');
 
+const settingsScreen = document.querySelector('.settings-screen');
+const options = document.querySelectorAll('.options');
+const displayTheme = document.querySelector('.display-theme');
+const styleMenu = document.querySelector('.style-menu');
+const colors = document.querySelectorAll('.colors');
+const displayData = document.querySelector('.display-data');
+const dataExport = document.querySelector('.data-export');
+const displayAbout = document.querySelector('.display-about');
+const exitSettingsScreen = document.querySelector('.exit-settings-screen');
+
 const rmenu = document.querySelector('.rmenu');
 const deleteBtn = document.querySelector('.delete-btn');
 
@@ -29,6 +40,9 @@ printBanner();
 
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
+
+let listSettings = [];
+const savedSettings = localStorage.getItem('savedSettings');
 
 if (savedNotes) {
     listNotes = JSON.parse(savedNotes);
@@ -40,6 +54,26 @@ if (listNotes.length === 0) {
     text.textContent = 'There are no saved notes :/';
     text.classList = 'there-are-no-saved-notes-msg';
     home.appendChild(text);
+}
+
+if (savedSettings) {
+    listSettings = JSON.parse(savedSettings);
+
+    document.documentElement.classList.add(listSettings.style);
+    styleMenu.value = listSettings.style;
+
+    document.documentElement.classList.add(listSettings.color);
+    colors.forEach((color) => {
+        if (color.classList[0] === `color-${listSettings.color}`) color.classList.add('active-color');
+    });
+} else {
+    const settingsTemplate = {
+        style: 'system',
+        color: 'blue',
+    }
+
+    localStorage.setItem('savedSettings', JSON.stringify(settingsTemplate));
+    listSettings = settingsTemplate;
 }
 
 const notes = document.querySelectorAll('.note');
@@ -99,6 +133,11 @@ noteCreateBtn.addEventListener('click', () => {
     header.style.display = 'none';
 });
 
+settingsBtn.addEventListener('click', () => {
+    printScreen(settingsScreen, 'flex');
+    header.style.display = 'none';
+});
+
 cancelNewNoteBtn.addEventListener('click', () => {
     printScreen(home, 'block');
     header.style.display = 'flex';
@@ -145,6 +184,42 @@ chatForm.addEventListener('submit', (event) => {
 
     printMsg(msg.content);
     chatInput.value = '';
+});
+
+exitSettingsScreen.addEventListener('click', () => {
+    printScreen(home, 'block');
+    header.style.display = 'flex';
+});
+
+options.forEach((option) => {
+    option.addEventListener('click', () => {
+        if (option.dataset.option === displayTheme.dataset.option) printScreenSettings(displayTheme, 'block');
+        if (option.dataset.option === displayData.dataset.option) printScreenSettings(displayData, 'block');
+        if (option.dataset.option === displayAbout.dataset.option) printScreenSettings(displayAbout, 'block');
+
+        options.forEach((o) => {
+            if (o.classList[2] === 'option-active') o.classList.remove('option-active');
+        });
+        option.classList.add('option-active');
+    });
+});
+
+styleMenu.addEventListener('change', () => {
+    listSettings.style = styleMenu.value;
+    localStorage.setItem('savedSettings', JSON.stringify(listSettings));
+    location.reload();
+});
+
+colors.forEach((color) => {
+    color.addEventListener('click', () => {
+        listSettings.color = color.classList[0].substr(6);
+        localStorage.setItem('savedSettings', JSON.stringify(listSettings));
+        location.reload();
+    });
+});
+
+dataExport.addEventListener('click', () => {
+    dataDownloader();
 });
 
 document.addEventListener('contextmenu', (e) => {
@@ -231,7 +306,7 @@ function createMessageEmenent(content) {
 function checkName(name) {
     let nameValid = true;
     listNotes.forEach((note) => {
-        if (name === note.title) nameValid = false
+        if (name === note.title) nameValid = false;
     });
     return nameValid;
 }
@@ -240,5 +315,25 @@ function printScreen(element, show) {
     home.style.display = 'none';
     notesCreationMenu.style.display = 'none';
     noteDisplay.style.display = 'none';
+    settingsScreen.style.display = 'none';
     element.style.display = show;
+}
+
+function printScreenSettings(element, show) {
+    displayTheme.style.display = 'none';
+    displayData.style.display = 'none';
+    displayAbout.style.display = 'none';
+    element.style.display = show;
+}
+
+function dataDownloader() {
+	const data = [];
+    data.push(listSettings);
+	listNotes.forEach((element) => data.push(element));
+	const jsonString = JSON.stringify(data);
+	const linkDownload = document.createElement("a");
+	linkDownload.download = "data.json";
+	const blobTasks = new Blob([jsonString], { type: "application/json" });
+	linkDownload.href = window.URL.createObjectURL(blobTasks);
+	linkDownload.click();
 }

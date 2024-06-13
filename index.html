@@ -36,6 +36,7 @@
     <div class="home">
         <div class="notes-container"></div>
         <button class="note-create-btn btn">+</button>
+        <button class="settings-btn btn"><img class="settings-icon" src="img/settings.svg" alt="settings"></button>
     </div>
 
     <div class="notes-creation-menu">
@@ -47,27 +48,82 @@
         </div>
     </div>
 
-        <div class="note-display">
-            <div class="chat-header">
-                <button class="back-home-btn">
-                    <img src="img/back-left.svg" alt="back left">
-                </button>
-                <p class="title-chat-header"></p>
+    <div class="note-display">
+        <div class="chat-header">
+            <button class="back-home-btn">
+                <img src="img/back-left.svg" alt="back left">
+            </button>
+            <p class="title-chat-header"></p>
+        </div>
+
+        <section class="chat-msg">
+        </section>
+
+        <form class="chat-form">
+            <input type="text" class="chat-input" placeholder="Write your note..." required />
+            <button type="submit" class="chat-btn btn">+</button>
+        </form>
+    </div>
+
+    <div class="settings-screen">
+        <div class="settings-options">
+            <span data-option="Theme" class="theme-option options option-active">Theme</span>
+            <span data-option="Data" class="data-option options">Data</span>
+            <span data-option="About" class="about-option options">About</span>
+        </div>
+        <div class="display-settings">
+            <div data-option="Theme" class="display-theme">
+                <div>
+                    <div class="context">Style</div>
+                    <select class="style-menu">
+                        <option value="system" selected>System Default</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="context">Color</div>
+                    <div class="colors-container">
+                        <span class="color-red colors"></span>
+                        <span class="color-purple colors"></span>
+                        <span class="color-blue colors"></span>
+                        <span class="color-green colors"></span>
+                    </div>
+                </div>
             </div>
 
-            <section class="chat-msg">
-            </section>
+            <div data-option="Data" class="display-data">
+                <span class="data-export">Export data</span>
+            </div>
 
-            <form class="chat-form">
-                <input type="text" class="chat-input" placeholder="Write your note..." required />
-                <button type="submit" class="chat-btn btn">+</button>
-            </form>
+            <div data-option="About" class="display-about">
+                <div>
+                    <img class="app-img" src="build/icons/256x256.png" alt="qnote img">
+                    <p class="app-name">Qnote</p>
+                </div>
+                <div>
+                    <div class="context">Website</div>
+                    <a href="https://eierick.github.io/qnote" target="_blank">Qnote</a>
+                </div>
+                    <div class="context">Source Code</div>
+                    <a href="https://github.com/eierick/qnote" target="_blank">Github</a>
+                <div>
+                    <div class="context">Credits</div>
+                    <p>Made by Érick</p>
+                </div>
+                <div>
+                    <div class="context">Legal</div>
+                    <p class="legal-text">This application comes with absolutely no warranty. See the <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank"> GNU General Public License, version 3 or later</a> for details.</p>
+                </div>
+            </div>
         </div>
+        <bnt class="exit-settings-screen options"><img src="img/exit.svg" alt="exit" class="exit-settings-icon">Exit</bnt>
+    </div>
 
-        <div class="rmenu">
-            <span class="delete-btn">Delete</span>
-        </div>
-    <script src="theme.js"></script>
+    <div class="rmenu">
+        <span class="delete-btn">Delete</span>
+    </div>
     <script src="script.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>
