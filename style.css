@@ -140,6 +140,8 @@ body {
     padding: .5rem;
     border-radius: var(--radius);
     color: black;
+    width: 50%;
+    border: .1rem solid rgba(255, 255, 255, 0.2);
 }
 
 /* HOME */
@@ -338,9 +340,17 @@ body {
     background-color: var(--primary-color-hover);
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
     .alert {
         width: 20rem;
+    }
+
+    .header .brand-header {
+        display: none;
+    }
+
+    .header .search-bar {
+        width: 90%;
     }
 
     .home .note-create-btn {

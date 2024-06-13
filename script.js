@@ -44,8 +44,6 @@ if (listNotes.length === 0) {
     home.appendChild(text);
 }
 
-if (window.innerWidth <= 500) brandHeader.style.display = 'none';
-
 const notes = document.querySelectorAll('.note');
 
 notes.forEach(noteTitle => {
