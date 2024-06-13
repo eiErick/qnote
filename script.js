@@ -32,9 +32,7 @@ const savedNotes = localStorage.getItem('savedNotes');
 
 if (savedNotes) {
     listNotes = JSON.parse(savedNotes);
-    listNotes.forEach(note => {
-        noteMaker(note.title);
-    });
+    listNotes.forEach(note => noteMaker(note.title));
 }
 
 if (listNotes.length === 0) {
@@ -54,13 +52,8 @@ notes.forEach(noteTitle => {
         header.style.display = 'none';
 
         listNotes.forEach((note) => {
-            if (note.title === noteTitle.childNodes[0].textContent) {
-                note.notes.forEach((text) => {
-                    printMsg(text);
-                });
-            }
+            if (note.title === noteTitle.childNodes[0].textContent) note.notes.forEach((text) => printMsg(text));
         });
-
     });
 });
 
@@ -72,9 +65,7 @@ notes.forEach((note) => {
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX}px`;
         
-        document.addEventListener('click', () => {
-            rmenu.style.display = 'none';
-        });
+        document.addEventListener('click', () => rmenu.style.display = 'none');
 
         deleteBtn.addEventListener('click', () => {
             listNotes.forEach((n) => {
@@ -94,9 +85,7 @@ notes.forEach((note) => {
     });
 });
 
-brandHeader.addEventListener('click', () => {
-    printScreen(home, 'flex');
-});
+brandHeader.addEventListener('click', () => printScreen(home, 'flex'));
 
 searchBar.addEventListener('input', () => {
     notesContainer.childNodes.forEach((note) => {
@@ -165,10 +154,7 @@ document.addEventListener('contextmenu', (e) => {
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX - 120}px`;
 
-        document.addEventListener('click', () => {
-            rmenu.style.display = 'none';
-        });
-        
+        document.addEventListener('click', () => rmenu.style.display = 'none');
         deleteBtn.addEventListener('click', () => {
             const title = document.querySelector('.title-chat-header');
             let index = 0;
@@ -184,9 +170,7 @@ document.addEventListener('contextmenu', (e) => {
             e.target.remove();
 
             const msgs = document.querySelectorAll('.msg');
-            for (let i = 0; i < msgs.length; i++) {
-                listNotes[index].notes.push(msgs[i].textContent);
-            }
+            for (let i = 0; i < msgs.length; i++) listNotes[index].notes.push(msgs[i].textContent);
 
             localStorage.setItem('savedNotes', JSON.stringify(listNotes));
         });
@@ -219,13 +203,9 @@ function alert(type, msg) {
 
     alertHTML.style.display = 'flex';
 
-    alertCloseBtn.addEventListener('click', () => {
-        alertHTML.style.display = 'none';
-    });
+    alertCloseBtn.addEventListener('click', () => alertHTML.style.display = 'none');
 
-    setTimeout(() => {
-        alertHTML.style.display = 'none';
-    }, 5000);
+    setTimeout(() => alertHTML.style.display = 'none', 5000);
 }
 
 function printMsg(text) {
@@ -251,9 +231,7 @@ function createMessageEmenent(content) {
 function checkName(name) {
     let nameValid = true;
     listNotes.forEach((note) => {
-        if (name === note.title) {
-            nameValid = false;
-        }
+        if (name === note.title) nameValid = false
     });
     return nameValid;
 }
