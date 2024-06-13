@@ -25,6 +25,9 @@ const chatMsg = document.querySelector('.chat-msg');
 
 const settingsScreen = document.querySelector('.settings-screen');
 const options = document.querySelectorAll('.options');
+const themeOption = document.querySelector('.theme-option');
+const dataOption = document.querySelector('.data-option');
+const aboutOoption = document.querySelector('.about-option');
 const displayTheme = document.querySelector('.display-theme');
 const styleMenu = document.querySelector('.style-menu');
 const colors = document.querySelectorAll('.colors');
@@ -68,6 +71,9 @@ if (savedSettings) {
     if (listSettings.style === 'light') {
         backHomeBtn.childNodes[1].setAttribute('src', 'img/back-left-dark.svg');
         exitSettingsScreen.childNodes[0].setAttribute('src', 'img/exit-dark.svg');
+        themeOption.childNodes[0].setAttribute('src', 'img/theme-dark.svg');
+        aboutOoption.childNodes[0].setAttribute('src', 'img/about-dark.svg');
+        dataOption.childNodes[0].setAttribute('src', 'img/data-dark.svg');
     }
 } else {
     const settingsTemplate = {

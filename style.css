@@ -360,23 +360,25 @@ body {
 
 .settings-screen .settings-options {
     display: flex;
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
     flex-direction: column;
     align-items: center;
-    margin: 0;
-    padding: 0;
-    width: 6rem;
-    background-color: var(--pg-color);
+    width: 3rem;
     position: fixed;
-    height: 100%;
+    height: 98%;
     overflow: auto;
-    border-right: .1rem solid var(--border-color);
+    border: .1rem solid var(--border-color);
+    margin-left: .5rem;
+    border-radius: var(--radius);
 }
 
 .settings-screen .options {
     text-align: center;
     cursor: pointer;
     padding: .5rem 0;
-    width: 90%;
+    width: 100%;
     border-radius: var(--radius);
     margin-bottom: .2rem;
 }
@@ -395,7 +397,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 6rem;
+    margin-left: 3.5rem;
 }
 
 .settings-screen .context {
@@ -416,10 +418,8 @@ body {
 
 .settings-screen .exit-settings-screen {
     position: fixed;
-    transform: translate(-50%, -110%);
+    transform: translateY(-100%);
     top: 100%;
-    left: 3rem;
-    width: 5rem;
 }
 
 .colors {
@@ -511,7 +511,7 @@ body {
 }
 
 .legal-text {
-    max-width: 12rem;
+    max-width: 14rem;
     text-align: justify;
     font-size: .8rem;
 }
