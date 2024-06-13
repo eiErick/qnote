@@ -66,6 +66,11 @@ if (savedSettings) {
     colors.forEach((color) => {
         if (color.classList[0] === `color-${listSettings.color}`) color.classList.add('active-color');
     });
+    
+    if (listSettings.style === 'light') {
+        backHomeBtn.childNodes[1].setAttribute('src', 'img/back-left-dark.svg');
+        exitSettingsScreen.childNodes[0].setAttribute('src', 'img/exit-dark.svg');
+    }
 } else {
     const settingsTemplate = {
         style: 'system',
@@ -228,7 +233,7 @@ dataExport.addEventListener('click', () => {
 document.addEventListener('contextmenu', (e) => {
     if (e.target.classList[0] === 'msg') {
         e.preventDefault();
-        
+
         rmenu.style.display = 'flex';
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX - 120}px`;
