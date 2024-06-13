@@ -66,7 +66,7 @@ if (savedSettings) {
     colors.forEach((color) => {
         if (color.classList[0] === `color-${listSettings.color}`) color.classList.add('active-color');
     });
-    
+
     if (listSettings.style === 'light') {
         backHomeBtn.childNodes[1].setAttribute('src', 'img/back-left-dark.svg');
         exitSettingsScreen.childNodes[0].setAttribute('src', 'img/exit-dark.svg');
@@ -270,17 +270,10 @@ document.addEventListener('contextmenu', (e) => {
 function noteMaker(title) {
     const div = document.createElement('div');
     const pTitle = document.createElement('p');
-    const pLastNote = document.createElement('p');
-
     div.classList.add('note');
     pTitle.classList.add('note-title');
-    pLastNote.classList.add('last-note');
-
     pTitle.textContent = title;
-
     div.appendChild(pTitle);
-    div.appendChild(pLastNote);
-
     notesContainer.appendChild(div);
 }
 
