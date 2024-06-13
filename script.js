@@ -98,10 +98,15 @@ notes.forEach((note) => {
         rmenu.style.display = 'flex';
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX}px`;
-        
-        document.addEventListener('click', () => rmenu.style.display = 'none');
+
+        let isDelete = true;        
+        document.addEventListener('click', () => {
+            isDelete = false;
+            rmenu.style.display = 'none';
+        });
 
         deleteBtn.addEventListener('click', () => {
+        if (!isDelete) return;
             listNotes.forEach((n) => {
                 if (note.childNodes[0].textContent === n.title) {
                     note.remove();
@@ -110,10 +115,8 @@ notes.forEach((note) => {
                         if (listNotes[i].title === n.title) listNotes.splice(i, 1);
                         localStorage.setItem('savedNotes', JSON.stringify(listNotes));
                     }
-
                 }
             });
-
         });
 
     });
@@ -225,12 +228,19 @@ dataExport.addEventListener('click', () => {
 document.addEventListener('contextmenu', (e) => {
     if (e.target.classList[0] === 'msg') {
         e.preventDefault();
+        
         rmenu.style.display = 'flex';
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX - 120}px`;
 
-        document.addEventListener('click', () => rmenu.style.display = 'none');
+        let isDelete = true;
+        document.addEventListener('click', () => {
+            isDelete = false;
+            rmenu.style.display = 'none';
+        });
+
         deleteBtn.addEventListener('click', () => {
+            if (!isDelete) return;
             const title = document.querySelector('.title-chat-header');
             let index = 0;
             
