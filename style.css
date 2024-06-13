@@ -531,6 +531,23 @@ body {
     background-color: var(--primary-color-hover);
 }
 
+::-webkit-scrollbar {
+    width: .4rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555555cc;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 @media screen and (max-width: 550px) {
     .header .brand-header {
         display: none;
