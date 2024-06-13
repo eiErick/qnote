@@ -478,6 +478,22 @@ body {
     border: .1rem solid var(--border-color);
 }
 
+.data-inp {
+    display: none;
+}
+
+.data-import {
+    position: absolute;
+    cursor: pointer;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: .5rem 4.5rem .5rem 4.5rem;
+    border-radius: var(--radius);
+    transform: translateX(-50%);
+    top: 4.5rem;
+    border: .1rem solid var(--border-color);
+}
+
 .data-export:hover {
     background-color: var(--shadow-color);
 }

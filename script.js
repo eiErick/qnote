@@ -345,3 +345,47 @@ function dataDownloader() {
 	linkDownload.href = window.URL.createObjectURL(blobTasks);
 	linkDownload.click();
 }
+
+dataImport();
+
+function dataImport() {
+	document.querySelector(".data-inp").addEventListener("change", (element) => {
+		const file = element.target.files[0];
+		if (file) {
+            console.log(file);
+			const reader = new FileReader();
+
+			reader.onload = function (content) {
+				let jsonData;
+				try {
+					const getterData = JSON.parse(content.target.result);
+					jsonData = getterData;
+				} catch (error) {
+					alert('warning', 'Error parsing JSON file!');
+				}
+
+				if (jsonData != undefined) {
+                    let listNotesData;
+
+                    if (window.confirm('You want to erase the current data?')) {
+                        listNotesData = [];
+                    } else {
+                        listNotesData = listNotes;
+                    }
+
+					let listSettingsData;
+
+                    for(let i = 0; i < jsonData.length; i++) {
+                        if (i != 0) listNotesData.push(jsonData[i]);
+                        if (i === 0) listSettingsData = (jsonData[0]);
+                    }
+
+					localStorage.setItem("savedNotes", JSON.stringify(listNotesData));
+					localStorage.setItem("savedSettings", JSON.stringify(listSettingsData));
+					location.reload();
+				}
+			};
+			reader.readAsText(file);
+		}
+	});
+}
