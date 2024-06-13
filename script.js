@@ -145,7 +145,7 @@ brandHeader.addEventListener('click', () => printScreen(home, 'flex'));
 searchBar.addEventListener('input', () => {
     notesContainer.childNodes.forEach((note) => {
         note.style.display = 'none';
-        if (searchBar.value === note.firstChild.innerHTML.substr(0, searchBar.value.length)) note.style.display = 'flex';
+        if (searchBar.value.toUpperCase() === note.firstChild.innerHTML.substr(0, searchBar.value.length).toUpperCase()) note.style.display = 'flex';
     });
 });
 
