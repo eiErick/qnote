@@ -99,18 +99,6 @@ body {
     font-weight: bold;
 }
 
-/* BANNER */
-
-.banner {
-    display: none;
-    justify-content: center;
-    gap: 2rem;
-    position: relative;
-    padding: .5rem;
-    background-color: rgb(50, 50, 50);
-    top: 0;
-}
-
 /* THERE ARE NO SAVED NOTES MSG */
 
 .there-are-no-saved-notes-msg {

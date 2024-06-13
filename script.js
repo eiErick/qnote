@@ -36,8 +36,6 @@ const exitSettingsScreen = document.querySelector('.exit-settings-screen');
 const rmenu = document.querySelector('.rmenu');
 const deleteBtn = document.querySelector('.delete-btn');
 
-printBanner();
-
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
 
@@ -294,14 +292,6 @@ function alert(type, msg) {
 function printMsg(text) {
     const msg = createMessageEmenent(text);
     chatMsg.appendChild(msg);
-}
-
-function printBanner() {
-    if (window.location.href === "https://eierick.github.io/qnote/") {
-        const banner = document.querySelector(".banner");
-        if (navigator.platform !== "Linux x86_64") return;
-        banner.style.display = "flex";
-    }
 }
 
 function createMessageEmenent(content) {
