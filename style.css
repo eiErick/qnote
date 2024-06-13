@@ -40,7 +40,6 @@ body {
     cursor: pointer;
     border-radius: var(--radius);
     background-color: var(--primary-color);
-    box-shadow: .1rem .1rem .6rem var(--shadow-color);
 }
 
 .btn:hover {
@@ -54,7 +53,7 @@ body {
     align-items: center;
     position: relative;
     background-color: rgba(245, 176, 48, 0.15);
-    width: 30rem;
+    width: 20rem;
     padding: .5rem 1.5rem;
     margin: auto;
     margin-top: 1rem;
@@ -151,12 +150,12 @@ body {
 }
 
 .home .note-create-btn {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    width: 4rem;
-    height: 4rem;
-    font-size: 3rem;
+    position: absolute;
+    top: .4rem;
+    right: .4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 2rem;
 }
 
 .home .notes-container {
@@ -251,15 +250,22 @@ body {
     width: 1.8rem;
     cursor: pointer;
     background-color: transparent;
-    margin: 0 2rem 0 1rem;
+    margin: 0 .5rem 0 0;
 }
 
 .note-display .back-home-btn img {
-    height: 2rem;
+    height: 2.5rem;
+    padding: .6rem;
+    border-radius: var(--radius);
+}
+
+.note-display .back-home-btn img:hover {
+    background-color: var(--shadow-color);
 }
 
 .note-display .title-chat-header {
     font-size: 1.4rem;
+    transform: translateY(-15%);
 }
 
 .note-display .chat-msg {
@@ -291,7 +297,6 @@ body {
     font-size: 1.1em;
     color: black;
     border-radius: var(--radius);
-    box-shadow: .1rem .1rem .6rem var(--shadow-color);
 }
 
 .note-display .chat-btn {
@@ -321,12 +326,11 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    padding: .2rem .2rem;
     position: absolute;
     background-color: var(--pg-color);
     border-radius: var(--radius);
     width: 10rem;
-    box-shadow: .1rem .1rem .6rem var(--shadow-color);
+    border: .1rem solid rgba(255, 255, 255, 0.2);
 }
 
 .delete-btn {
@@ -341,10 +345,6 @@ body {
 }
 
 @media screen and (max-width: 550px) {
-    .alert {
-        width: 20rem;
-    }
-
     .header .brand-header {
         display: none;
     }
@@ -354,34 +354,18 @@ body {
     }
 
     .home .note-create-btn {
+        position: fixed;
+        transform: translateY(-115%);
+        top: 100%;
         width: 3rem;
         height: 3rem;
-        font-size: 2rem;
     }
     
     .home .notes-container {
         width: 90%;
     }
 
-    .note-display .chat-header {
-        height: 3rem;
-    }
-
-    .note-display .back-home-btn {
-        margin: 0 1rem 0 .4rem;
-    }
-
     .note-display .msg {
         max-width: 80%;
-    }
-
-    .note-display .chat-input {
-        height: 2rem;
-    }
-
-    .note-display .chat-btn {
-        width: 2rem;
-        height: 2rem;
-        font-size: 1.8rem;
     }
 }
