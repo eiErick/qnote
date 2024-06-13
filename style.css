@@ -250,7 +250,6 @@ body {
     width: 1.8rem;
     cursor: pointer;
     background-color: transparent;
-    margin: 0 .5rem 0 0;
 }
 
 .note-display .back-home-btn img {
@@ -265,7 +264,10 @@ body {
 
 .note-display .title-chat-header {
     font-size: 1.4rem;
-    transform: translateY(-15%);
+    position: absolute;
+    top: 50%;
+    left: 3rem;
+    transform: translateY(-60%);
 }
 
 .note-display .chat-msg {
