@@ -364,7 +364,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
-    width: 12rem;
+    width: 6rem;
     background-color: var(--pg-color);
     position: fixed;
     height: 100%;
@@ -376,7 +376,7 @@ body {
     text-align: center;
     cursor: pointer;
     padding: .5rem 0;
-    width: 95%;
+    width: 90%;
     border-radius: var(--radius);
     margin-bottom: .2rem;
 }
@@ -395,7 +395,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 12rem;
+    margin-left: 6rem;
 }
 
 .settings-screen .context {
@@ -409,7 +409,7 @@ body {
     border-radius: var(--radius);
     padding: .5rem;
     background-color: transparent;
-    width: 15rem;
+    width: 12rem;
     cursor: pointer;
     border: .1rem solid var(--border-color);
 }
@@ -418,8 +418,8 @@ body {
     position: fixed;
     transform: translate(-50%, -110%);
     top: 100%;
-    left: 6rem;
-    width: 6rem;
+    left: 3rem;
+    width: 5rem;
 }
 
 .colors {
@@ -455,15 +455,17 @@ body {
 }
 
 .data-export {
+    text-align: center;
     position: absolute;
     cursor: pointer;
     font-size: 1.2rem;
     cursor: pointer;
-    padding: .5rem 4.5rem .5rem 4.5rem;
+    padding: .5rem 0rem .5rem .5rem;
     border-radius: var(--radius);
     transform: translateX(-50%);
     top: 1rem;
     border: .1rem solid var(--border-color);
+    width: 12rem;
 }
 
 .data-inp {
@@ -471,15 +473,17 @@ body {
 }
 
 .data-import {
+    text-align: center;
     position: absolute;
     cursor: pointer;
     font-size: 1.2rem;
     cursor: pointer;
-    padding: .5rem 4.5rem .5rem 4.5rem;
+    padding: .5rem 0rem .5rem .5rem;
     border-radius: var(--radius);
     transform: translateX(-50%);
     top: 4.5rem;
     border: .1rem solid var(--border-color);
+    width: 12rem;
 }
 
 .data-export:hover {
@@ -507,7 +511,7 @@ body {
 }
 
 .legal-text {
-    max-width: 15rem;
+    max-width: 12rem;
     text-align: justify;
     font-size: .8rem;
 }
@@ -590,5 +594,9 @@ body {
 
     .note-display .msg {
         max-width: 80%;
+    }
+
+    .settings-screen .app-img {
+        width: 200px;
     }
 }
