@@ -525,6 +525,7 @@ body {
 
 .rmenu{
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -542,6 +543,17 @@ body {
 }
 
 .delete-btn:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.copy-btn {
+    padding: .4rem 1rem .4rem 2rem;
+    width: 10rem;
+    border-radius: var(--radius);
+    cursor: pointer; 
+}
+
+.copy-btn:hover {
     background-color: var(--primary-color-hover);
 }
 

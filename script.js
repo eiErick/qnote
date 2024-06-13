@@ -38,6 +38,7 @@ const exitSettingsScreen = document.querySelector('.exit-settings-screen');
 
 const rmenu = document.querySelector('.rmenu');
 const deleteBtn = document.querySelector('.delete-btn');
+const copyBtn = document.querySelector('.copy-btn');
 
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
@@ -109,13 +110,15 @@ notes.forEach((note) => {
         rmenu.style.left = `${event.clientX}px`;
 
         let isDelete = true;        
+        let isCopy = true;        
         document.addEventListener('click', () => {
             isDelete = false;
+            isCopy = false;
             rmenu.style.display = 'none';
         });
 
         deleteBtn.addEventListener('click', () => {
-        if (!isDelete) return;
+            if (!isDelete) return;
             listNotes.forEach((n) => {
                 if (note.childNodes[0].textContent === n.title) {
                     note.remove();
@@ -128,6 +131,12 @@ notes.forEach((note) => {
             });
         });
 
+        copyBtn.addEventListener('click', () => {
+            if (!isCopy) return;
+            listNotes.forEach((n) => {
+                if (note.childNodes[0].textContent === n.title) navigator.clipboard.writeText(n.title);
+            });
+        });
     });
 });
 
@@ -243,8 +252,10 @@ document.addEventListener('contextmenu', (e) => {
         rmenu.style.left = `${event.clientX - 120}px`;
 
         let isDelete = true;
+        let isCopy = true;
         document.addEventListener('click', () => {
             isDelete = false;
+            isCopy = false;
             rmenu.style.display = 'none';
         });
 
@@ -267,6 +278,11 @@ document.addEventListener('contextmenu', (e) => {
             for (let i = 0; i < msgs.length; i++) listNotes[index].notes.push(msgs[i].textContent);
 
             localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (!isCopy) return;
+            navigator.clipboard.writeText(e.target.textContent);
         });
     }
 });
