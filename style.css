@@ -27,8 +27,7 @@
     --primary-color-400: #ff5757;
     --primary-color-500: #ff2323;
     --primary-color-700: #d70000;
-    --primary-color-950: #d70000;
-    --primary-color-hover: #ff4d4d;
+    --primary-color-950: #500000;
 }
 
 .blue {
@@ -39,7 +38,6 @@
     --primary-color-500: #439cee;
     --primary-color-700: #256ad0;
     --primary-color-950: #192e52;
-    --primary-color-hover: #438de6;
 }
 
 .purple {
@@ -50,7 +48,6 @@
     --primary-color-500: #8756ec;
     --primary-color-700: #7232cf;
     --primary-color-950: #311560;
-    --primary-color-hover: #996fef;
 }
 
 .green {
@@ -61,7 +58,6 @@
     --primary-color-500: #0fba78;
     --primary-color-700: #04875b;
     --primary-color-950: #022c20;
-    --primary-color-hover: #2a9974;
 }
 
 * {
@@ -482,7 +478,7 @@ body {
     height: 100vh;
 }
 
-.data-export {
+.data-btn {
     text-align: center;
     position: absolute;
     cursor: pointer;
@@ -491,9 +487,16 @@ body {
     padding: .5rem 0rem .5rem .5rem;
     border-radius: var(--radius);
     transform: translateX(-50%);
-    top: 1rem;
     border: .1rem solid var(--border-color);
-    width: 12rem;
+    width: 15rem;
+}
+
+.data-btn:hover {
+    background-color: var(--shadow-color);
+}
+
+.data-export {
+    top: 1rem;
 }
 
 .data-inp {
@@ -501,21 +504,21 @@ body {
 }
 
 .data-import {
-    text-align: center;
-    position: absolute;
-    cursor: pointer;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: .5rem 0rem .5rem .5rem;
-    border-radius: var(--radius);
-    transform: translateX(-50%);
     top: 4.5rem;
-    border: .1rem solid var(--border-color);
-    width: 12rem;
 }
 
-.data-export:hover {
-    background-color: var(--shadow-color);
+.clear-all-settings {
+    top: 8rem;
+}
+
+.delete-all-notes {
+    top: 11.5rem;
+    color: #ff5757;
+}
+
+.delete-all-notes:hover {
+    background-color: #ffc0c0;
+    color: #500000;
 }
 
 .display-about {

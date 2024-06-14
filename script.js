@@ -33,6 +33,8 @@ const styleMenu = document.querySelector('.style-menu');
 const colors = document.querySelectorAll('.colors');
 const displayData = document.querySelector('.display-data');
 const dataExport = document.querySelector('.data-export');
+const clearAllSettingsBtn = document.querySelector('.clear-all-settings');
+const deleteAllNotesBtn = document.querySelector('.delete-all-notes');
 const displayAbout = document.querySelector('.display-about');
 const exitSettingsScreen = document.querySelector('.exit-settings-screen');
 
@@ -65,6 +67,11 @@ if (listNotes.length === 0) {
     home.appendChild(text);
 }
 
+const settingsTemplate = {
+    style: 'system',
+    color: 'blue',
+}
+
 if (savedSettings) {
     listSettings = JSON.parse(savedSettings);
 
@@ -84,11 +91,6 @@ if (savedSettings) {
         dataOption.childNodes[0].setAttribute('src', 'img/data-dark.svg');
     }
 } else {
-    const settingsTemplate = {
-        style: 'system',
-        color: 'blue',
-    }
-
     localStorage.setItem('savedSettings', JSON.stringify(settingsTemplate));
     listSettings = settingsTemplate;
 }
@@ -272,8 +274,12 @@ colors.forEach((color) => {
     });
 });
 
-dataExport.addEventListener('click', () => {
-    dataDownloader();
+dataExport.addEventListener('click', () => dataDownloader());
+
+clearAllSettingsBtn.addEventListener('click', () => clearAllSettings());
+
+deleteAllNotesBtn.addEventListener('click', () => {
+    if (window.confirm('Are you sure you want to delete all notes?')) deleteAllNotes();
 });
 
 renameBtnCancel.addEventListener('click', () => renameMenu.style.display = 'none');
@@ -457,12 +463,22 @@ function dataImport() {
                         if (i === 0) listSettingsData = (jsonData[0]);
                     }
 
-					localStorage.setItem("savedNotes", JSON.stringify(listNotesData));
-					localStorage.setItem("savedSettings", JSON.stringify(listSettingsData));
+					localStorage.setItem('savedNotes', JSON.stringify(listNotesData));
+					localStorage.setItem('savedSettings', JSON.stringify(listSettingsData));
 					location.reload();
 				}
 			};
 			reader.readAsText(file);
 		}
 	});
+}
+
+function clearAllSettings() {
+    localStorage.setItem('savedSettings', JSON.stringify(settingsTemplate));
+    location.reload();
+}
+
+function deleteAllNotes() {
+    localStorage.setItem('savedNotes', JSON.stringify([]));
+    location.reload();
 }
