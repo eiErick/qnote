@@ -67,10 +67,7 @@ if (listNotes.length === 0) {
     home.appendChild(text);
 }
 
-const settingsTemplate = {
-    style: 'system',
-    color: 'blue',
-}
+const settingsTemplate = { style: 'system', color: 'blue' }
 
 if (savedSettings) {
     listSettings = JSON.parse(savedSettings);
@@ -79,9 +76,7 @@ if (savedSettings) {
     styleMenu.value = listSettings.style;
 
     document.documentElement.classList.add(listSettings.color);
-    colors.forEach((color) => {
-        if (color.classList[0] === `color-${listSettings.color}`) color.classList.add('active-color');
-    });
+    colors.forEach((color) => (color.classList[0] === `color-${listSettings.color}`) ? color.classList.add('active-color') : '');
 
     if (listSettings.style === 'light') {
         backHomeBtn.childNodes[1].setAttribute('src', 'img/back-left-dark.svg');
@@ -118,18 +113,14 @@ notes.forEach((note) => {
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX}px`;
 
-        let isDelete = true;        
-        let isCopy = true;  
-        let isRename = true; 
+        let isToDo = true;        
         document.addEventListener('click', () => {
-            isDelete = false;
-            isCopy = false;
-            isRename = false      
+            isToDo = false;     
             rmenu.style.display = 'none';
         });
 
         deleteBtn.addEventListener('click', () => {
-            if (!isDelete) return;
+            if (!isToDo) return;
             listNotes.forEach((n) => {
                 if (note.childNodes[0].textContent === n.title) {
                     note.remove();
@@ -143,14 +134,14 @@ notes.forEach((note) => {
         });
 
         copyBtn.addEventListener('click', () => {
-            if (!isCopy) return;
+            if (!isToDo) return;
             listNotes.forEach((n) => {
                 if (note.childNodes[0].textContent === n.title) navigator.clipboard.writeText(n.title);
             });
         });
 
         renameBtn.addEventListener('click', () => {
-            if (!isRename) return;
+            if (!isToDo) return;
             renameMenu.style.display = 'flex';
 
             listNotes.forEach((n) => {
@@ -275,13 +266,8 @@ colors.forEach((color) => {
 });
 
 dataExport.addEventListener('click', () => dataDownloader());
-
 clearAllSettingsBtn.addEventListener('click', () => clearAllSettings());
-
-deleteAllNotesBtn.addEventListener('click', () => {
-    if (window.confirm('Are you sure you want to delete all notes?')) deleteAllNotes();
-});
-
+deleteAllNotesBtn.addEventListener('click', () => (window.confirm('Are you sure you want to delete all notes?') ? deleteAllNotes() : ''));
 renameBtnCancel.addEventListener('click', () => renameMenu.style.display = 'none');
 
 document.addEventListener('contextmenu', (e) => {
@@ -292,18 +278,14 @@ document.addEventListener('contextmenu', (e) => {
         rmenu.style.top = `${event.clientY}px`;
         rmenu.style.left = `${event.clientX - 120}px`;
 
-        let isDelete = true;
-        let isCopy = true;
-        let isRename = true;
+        let isToDo = true;
         document.addEventListener('click', () => {
-            isDelete = false;
-            isCopy = false;
-            isRename = false;
+            isToDo = false;
             rmenu.style.display = 'none';
         });
 
         deleteBtn.addEventListener('click', () => {
-            if (!isDelete) return;
+            if (!isToDo) return;
             const title = document.querySelector('.title-chat-header');
             let index = 0;
             
@@ -324,12 +306,12 @@ document.addEventListener('contextmenu', (e) => {
         });
 
         copyBtn.addEventListener('click', () => {
-            if (!isCopy) return;
+            if (!isToDo) return;
             navigator.clipboard.writeText(e.target.textContent);
         });
 
         renameBtn.addEventListener('click', () => {
-            if (!isRename) return;
+            if (!isToDo) return;
             renameMenu.style.display = 'flex';
             renameTextarea.value = e.target.textContent;
 
@@ -377,9 +359,7 @@ function alert(type, msg) {
     }
 
     alertHTML.style.display = 'flex';
-
     alertCloseBtn.addEventListener('click', () => alertHTML.style.display = 'none');
-
     setTimeout(() => alertHTML.style.display = 'none', 5000);
 }
 
@@ -423,9 +403,9 @@ function dataDownloader() {
     data.push(listSettings);
 	listNotes.forEach((element) => data.push(element));
 	const jsonString = JSON.stringify(data);
-	const linkDownload = document.createElement("a");
-	linkDownload.download = "data.json";
-	const blobTasks = new Blob([jsonString], { type: "application/json" });
+	const linkDownload = document.createElement('a');
+	linkDownload.download = 'data.json';
+	const blobTasks = new Blob([jsonString], { type: 'application/json' });
 	linkDownload.href = window.URL.createObjectURL(blobTasks);
 	linkDownload.click();
 }
@@ -433,7 +413,7 @@ function dataDownloader() {
 dataImport();
 
 function dataImport() {
-	document.querySelector(".data-inp").addEventListener("change", (element) => {
+	document.querySelector('.data-inp').addEventListener('change', (element) => {
 		const file = element.target.files[0];
 		if (file) {
 			const reader = new FileReader();
@@ -452,9 +432,7 @@ function dataImport() {
 
                     if (window.confirm('You want to erase the current data?')) {
                         listNotesData = [];
-                    } else {
-                        listNotesData = listNotes;
-                    }
+                    } else listNotesData = listNotes;
 
 					let listSettingsData;
 
