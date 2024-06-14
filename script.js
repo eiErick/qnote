@@ -108,6 +108,8 @@ notes.forEach(noteTitle => {
 notes.forEach((note) => {
     note.addEventListener('contextmenu', (e) => {
         e.preventDefault();
+        e.target.style.background = '#500000';
+        e.target.parentNode.classList[0] === 'note' ? e.target.parentNode.style.background = '#500000' : '';
 
         rmenu.style.display = 'flex';
         rmenu.style.top = `${event.clientY}px`;
@@ -115,6 +117,8 @@ notes.forEach((note) => {
 
         let isToDo = true;        
         document.addEventListener('click', () => {
+            e.target.style.background = '';
+            e.target.parentNode.classList[0] === 'note' ? e.target.parentNode.style.background = '' : '';
             isToDo = false;     
             rmenu.style.display = 'none';
         });
@@ -273,6 +277,7 @@ renameBtnCancel.addEventListener('click', () => renameMenu.style.display = 'none
 document.addEventListener('contextmenu', (e) => {
     if (e.target.classList[0] === 'msg') {
         e.preventDefault();
+        e.target.style.background = '#ff5757';
 
         rmenu.style.display = 'flex';
         rmenu.style.top = `${event.clientY}px`;
@@ -280,6 +285,7 @@ document.addEventListener('contextmenu', (e) => {
 
         let isToDo = true;
         document.addEventListener('click', () => {
+            e.target.style.background = '';
             isToDo = false;
             rmenu.style.display = 'none';
         });
