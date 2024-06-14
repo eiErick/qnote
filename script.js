@@ -36,9 +36,16 @@ const dataExport = document.querySelector('.data-export');
 const displayAbout = document.querySelector('.display-about');
 const exitSettingsScreen = document.querySelector('.exit-settings-screen');
 
+const renameMenu = document.querySelector('.rename-menu');
+const renameTextarea = document.querySelector('.rename-textarea');
+const renameBtnConfirm = document.querySelector('.rename-btn-confirm');
+const renameBtnCancel = document.querySelector('.rename-btn-cancel');
+
 const rmenu = document.querySelector('.rmenu');
 const deleteBtn = document.querySelector('.delete-btn');
 const copyBtn = document.querySelector('.copy-btn');
+const renameBtn = document.querySelector('.rename-btn');
+
 
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
@@ -110,10 +117,12 @@ notes.forEach((note) => {
         rmenu.style.left = `${event.clientX}px`;
 
         let isDelete = true;        
-        let isCopy = true;        
+        let isCopy = true;  
+        let isRename = true; 
         document.addEventListener('click', () => {
             isDelete = false;
             isCopy = false;
+            isRename = false      
             rmenu.style.display = 'none';
         });
 
@@ -137,6 +146,30 @@ notes.forEach((note) => {
                 if (note.childNodes[0].textContent === n.title) navigator.clipboard.writeText(n.title);
             });
         });
+
+        renameBtn.addEventListener('click', () => {
+            if (!isRename) return;
+            renameMenu.style.display = 'flex';
+
+            listNotes.forEach((n) => {
+                if (note.childNodes[0].textContent === n.title) renameTextarea.value = n.title;
+
+                renameBtnConfirm.addEventListener('click', () => {
+                    const nameValid = checkName(renameTextarea.value);
+                    if (!nameValid) {
+                        alert('warning', 'The name already exists!');
+                        return;
+                    }
+
+                    n.title = renameTextarea.value;
+                    localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+                    location.reload();
+                    renameMenu.style.display = 'none';
+                    renameMenu.value = '';
+                });
+            });
+        });
+
     });
 });
 
@@ -243,6 +276,8 @@ dataExport.addEventListener('click', () => {
     dataDownloader();
 });
 
+renameBtnCancel.addEventListener('click', () => renameMenu.style.display = 'none');
+
 document.addEventListener('contextmenu', (e) => {
     if (e.target.classList[0] === 'msg') {
         e.preventDefault();
@@ -253,9 +288,11 @@ document.addEventListener('contextmenu', (e) => {
 
         let isDelete = true;
         let isCopy = true;
+        let isRename = true;
         document.addEventListener('click', () => {
             isDelete = false;
             isCopy = false;
+            isRename = false;
             rmenu.style.display = 'none';
         });
 
@@ -284,6 +321,35 @@ document.addEventListener('contextmenu', (e) => {
             if (!isCopy) return;
             navigator.clipboard.writeText(e.target.textContent);
         });
+
+        renameBtn.addEventListener('click', () => {
+            if (!isRename) return;
+            renameMenu.style.display = 'flex';
+            renameTextarea.value = e.target.textContent;
+
+            renameBtnConfirm.addEventListener('click', () => {
+                const title = document.querySelector('.title-chat-header');
+                let index = 0;
+                
+                for (let i = 0; i < listNotes.length; i++) {
+                    if (listNotes[i].title === title.textContent) {
+                        index = i;
+                        i = listNotes.length + 1;
+                    }
+                }
+
+                listNotes[index].notes = [];
+                e.target.textContent = renameTextarea.value;
+
+                const msgs = document.querySelectorAll('.msg');
+                for (let i = 0; i < msgs.length; i++) listNotes[index].notes.push(msgs[i].textContent);
+
+                localStorage.setItem('savedNotes', JSON.stringify(listNotes));
+                renameMenu.style.display = 'none';
+                renameMenu.value = '';
+            });
+        });
+
     }
 });
 
@@ -364,7 +430,6 @@ function dataImport() {
 	document.querySelector(".data-inp").addEventListener("change", (element) => {
 		const file = element.target.files[0];
 		if (file) {
-            console.log(file);
 			const reader = new FileReader();
 
 			reader.onload = function (content) {

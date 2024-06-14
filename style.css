@@ -535,26 +535,54 @@ body {
     border: .1rem solid var(--border-color);
 }
 
-.delete-btn {
-    padding: .4rem 1rem .4rem 2rem;
-    width: 10rem;
-    border-radius: var(--radius);
-    cursor: pointer;
-}
-
-.delete-btn:hover {
-    background-color: var(--primary-color-hover);
-}
-
-.copy-btn {
+.rmenu-btn {
     padding: .4rem 1rem .4rem 2rem;
     width: 10rem;
     border-radius: var(--radius);
     cursor: pointer; 
 }
 
-.copy-btn:hover {
+.rmenu-btn:hover {
     background-color: var(--primary-color-hover);
+}
+
+/* RENAME */
+
+.rename-menu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    background-color: var(--pg-color);
+    padding: 1rem;
+    border-radius: var(--radius);
+    width: 50%;
+    height: 50%;
+}
+
+.rename-btn-confirm {
+    padding: .4rem .8rem;
+    font-size: 1rem;
+}
+
+.rename-btn-cancel {
+    padding: .4rem .8rem;
+    font-size: 1rem;
+}
+
+.rename-textarea {
+    border-radius: var(--radius);
+    resize: none;
+    width: 90%;
+    height: 90%;
+    margin-bottom: .5rem;
+    color: #000000;
+    padding: .8rem;
+    border: .1rem solid var(--border-color);
 }
 
 ::-webkit-scrollbar {
