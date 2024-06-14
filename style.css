@@ -22,21 +22,45 @@
 
 .red {
     --primary-color: #ff0000;
+    --primary-color-50: #fff0f0;
+    --primary-color-200: #ffc0c0;
+    --primary-color-400: #ff5757;
+    --primary-color-500: #ff2323;
+    --primary-color-700: #d70000;
+    --primary-color-950: #d70000;
     --primary-color-hover: #ff4d4d;
 }
 
 .blue {
     --primary-color: #3584e4;
+    --primary-color-50: #f0f8fe;
+    --primary-color-200: #c2e3fb;
+    --primary-color-400: #66baf4;
+    --primary-color-500: #439cee;
+    --primary-color-700: #256ad0;
+    --primary-color-950: #192e52;
     --primary-color-hover: #438de6;
 }
 
 .purple {
     --primary-color: #8756ec;
+    --primary-color-50: #f5f4fe;
+    --primary-color-200: #dfd8fc;
+    --primary-color-400: #ac91f4;
+    --primary-color-500: #8756ec;
+    --primary-color-700: #7232cf;
+    --primary-color-950: #311560;
     --primary-color-hover: #996fef;
 }
 
 .green {
     --primary-color: #04875b;
+    --primary-color-50: #ecfdf4;
+    --primary-color-200: #a7f3cc;
+    --primary-color-400: #a7f3cc;
+    --primary-color-500: #0fba78;
+    --primary-color-700: #04875b;
+    --primary-color-950: #022c20;
     --primary-color-hover: #2a9974;
 }
 
@@ -59,11 +83,15 @@ body {
 .btn {
     cursor: pointer;
     border-radius: var(--radius);
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-700);
 }
 
 .btn:hover {
-    background-color: var(--primary-color-hover);
+    background-color: var(--primary-color-500);
+}
+
+.btn:active {
+    background-color: var(--primary-color-950);
 }
 
 /* ALERT */
@@ -342,7 +370,7 @@ body {
 }
 
 .note-display .msg {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-950);
     max-width: 50%;
     border-radius: var(--radius);
     align-self: flex-end;
@@ -543,7 +571,7 @@ body {
 }
 
 .rmenu-btn:hover {
-    background-color: var(--primary-color-hover);
+    background-color: var(--primary-color-500);
 }
 
 /* RENAME */
