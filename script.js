@@ -1,6 +1,11 @@
 const alertHTML = document.querySelector('.alert');
 const alertCloseBtn = document.querySelector('.alert-close-btn');
 
+const confirmHtml = document.querySelector('.confirm');
+const confirmMsg = document.querySelector('.confirm-msg');
+const cancelConfirmationBtn = document.querySelector('.cancel-confirmation-btn');
+const confirmConfirmationBtn = document.querySelector('.confirm-confirmation-btn');
+
 const header = document.querySelector('.header');
 const brandHeader = document.querySelector('.brand-header');
 const searchBar = document.querySelector('.search-bar');
@@ -270,8 +275,8 @@ colors.forEach((color) => {
 });
 
 dataExport.addEventListener('click', () => dataDownloader());
-clearAllSettingsBtn.addEventListener('click', () => clearAllSettings());
-deleteAllNotesBtn.addEventListener('click', () => (window.confirm('Are you sure you want to delete all notes?') ? deleteAllNotes() : ''));
+clearAllSettingsBtn.addEventListener('click', async () => (await confirm('Do you really want to go back to the default default settings?') ? clearAllSettings() : ''));
+deleteAllNotesBtn.addEventListener('click', async () => (await confirm('Are you sure you want to delete all notes?') ? deleteAllNotes() : ''));
 renameBtnCancel.addEventListener('click', () => renameMenu.style.display = 'none');
 
 document.addEventListener('contextmenu', (e) => {
@@ -369,6 +374,23 @@ function alert(type, msg) {
     setTimeout(() => alertHTML.style.display = 'none', 5000);
 }
 
+async function confirm(msg) {
+    confirmHtml.style.display = 'flex';
+    confirmMsg.textContent = msg;
+
+    return new Promise((r) => {
+        confirmConfirmationBtn.addEventListener('click', () => {
+            confirmHtml.style.display = 'none';
+            r(true);
+        }, { once: true });
+
+        cancelConfirmationBtn.addEventListener('click', () => {
+            confirmHtml.style.display = 'none';
+            r(false);
+        }, { once: true });
+    });  
+}
+
 function printMsg(text) {
     const msg = createMessageEmenent(text);
     chatMsg.appendChild(msg);
@@ -424,7 +446,7 @@ function dataImport() {
 		if (file) {
 			const reader = new FileReader();
 
-			reader.onload = function (content) {
+			reader.onload = async function (content) {
 				let jsonData;
 				try {
 					const getterData = JSON.parse(content.target.result);
@@ -436,7 +458,7 @@ function dataImport() {
 				if (jsonData != undefined) {
                     let listNotesData;
 
-                    if (window.confirm('You want to erase the current data?')) {
+                    if (await confirm('You want to erase the current data?')) {
                         listNotesData = [];
                     } else listNotesData = listNotes;
 

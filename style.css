@@ -123,6 +123,50 @@ body {
     font-weight: bold;
 }
 
+/* CONFIRM */
+
+.confirm {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    background-color: var(--pg-color);
+    border-radius: var(--radius);
+    max-width: 30rem;
+}
+
+.confirm-btns-container {
+    display: flex;
+}
+
+.confirm-msg {
+    padding: 2rem;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.confirm-btns {
+    width: 50%;
+    background-color: var(--pg-color);
+    cursor: pointer;
+    padding: .8rem;
+    font-size: 1.1rem;
+    border: .1rem solid var(--border-color);
+    font-weight: bolder;
+}
+
+.cancel-confirmation-btn {
+    border-radius: 0 0 0 var(--radius);
+}
+
+.confirm-confirmation-btn {
+    border-radius: 0 0 var(--radius) 0;
+    color: #ff5757;
+}
+
 /* THERE ARE NO SAVED NOTES MSG */
 
 .there-are-no-saved-notes-msg {
