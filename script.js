@@ -53,7 +53,6 @@ const deleteBtn = document.querySelector('.delete-btn');
 const copyBtn = document.querySelector('.copy-btn');
 const renameBtn = document.querySelector('.rename-btn');
 
-
 let listNotes = [];
 const savedNotes = localStorage.getItem('savedNotes');
 
