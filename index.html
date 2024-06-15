@@ -159,5 +159,8 @@
 
     <script src="script.js"></script>
     <script src="theme.js"></script>
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') navigator.serviceWorker.register('pwabuilder-sw.js');
+    </script>
 </body>
 </html>
