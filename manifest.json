@@ -1,0 +1,24 @@
+{
+    "background_color": "#ffffff",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "qnote",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "qnote",
+    "start_url": "/",
+    "theme_color": "#ffffff",
+    "icons": [
+      {
+        "src": "img/512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "description": "A simple app of annotation",
+    "lang": "en",
+    "categories": [
+      "productivity",
+      "utilities"
+    ]
+  }
