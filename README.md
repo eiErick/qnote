@@ -58,9 +58,6 @@ JS, HTML5, CSS3, ELECTRON and GIT
 
 - Add portuguese support
 
-- Improve animation
-
-
 ## Authors
 
 - [@eierick](https://www.github.com/eierick)
