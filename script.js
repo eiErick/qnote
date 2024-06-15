@@ -36,6 +36,9 @@ const aboutOoption = document.querySelector('.about-option');
 const displayTheme = document.querySelector('.display-theme');
 const styleMenu = document.querySelector('.style-menu');
 const colors = document.querySelectorAll('.colors');
+const checkboxCustomBackground = document.querySelector('.checkbox-custom-background');
+const imgCustomContainer = document.querySelector('.img-custom-container');
+const inpUrlBackground = document.querySelector('.inp-url-background');
 const displayData = document.querySelector('.display-data');
 const dataExport = document.querySelector('.data-export');
 const clearAllSettingsBtn = document.querySelector('.clear-all-settings');
@@ -71,7 +74,7 @@ if (listNotes.length === 0) {
     home.appendChild(text);
 }
 
-const settingsTemplate = { style: 'system', color: 'blue' }
+const settingsTemplate = { style: 'system', color: 'blue', customBackground: false }
 
 if (savedSettings) {
     listSettings = JSON.parse(savedSettings);
@@ -88,6 +91,13 @@ if (savedSettings) {
         themeOption.childNodes[0].setAttribute('src', 'img/theme-dark.svg');
         aboutOoption.childNodes[0].setAttribute('src', 'img/about-dark.svg');
         dataOption.childNodes[0].setAttribute('src', 'img/data-dark.svg');
+    }
+
+    if (listSettings.customBackground != false) {
+        imgCustomContainer.style.display = 'block';
+        inpUrlBackground.value = listSettings.customBackground;
+        checkboxCustomBackground.checked = true;
+        addCustomBackground(listSettings.customBackground);
     }
 } else {
     localStorage.setItem('savedSettings', JSON.stringify(settingsTemplate));
@@ -271,6 +281,24 @@ colors.forEach((color) => {
         localStorage.setItem('savedSettings', JSON.stringify(listSettings));
         location.reload();
     });
+});
+
+checkboxCustomBackground.addEventListener('click', () => {
+    if (checkboxCustomBackground.checked) imgCustomContainer.style.display = 'block';
+
+    if (!checkboxCustomBackground.checked) {
+        imgCustomContainer.style.display = 'none';
+        listSettings.customBackground = false;
+        localStorage.setItem('savedSettings', JSON.stringify(listSettings));
+    }
+});
+
+inpUrlBackground.addEventListener('blur', async () => {
+    const check = await checkImageUrl(inpUrlBackground.value);
+    if (check) {
+        listSettings.customBackground = inpUrlBackground.value;
+        localStorage.setItem('savedSettings', JSON.stringify(listSettings));
+    }
 });
 
 dataExport.addEventListener('click', () => dataDownloader());
@@ -486,4 +514,39 @@ function clearAllSettings() {
 function deleteAllNotes() {
     localStorage.setItem('savedNotes', JSON.stringify([]));
     location.reload();
+}
+
+function addCustomBackground(link) {
+    chatMsg.style.backgroundImage = `url(${link})`;
+    chatMsg.style.backgroundSize = 'cover';
+}
+
+async function checkImageUrl(link) {
+    let value = false;
+
+    try {
+        new URL(link);
+    } catch (e) {
+        alert('warning', 'Invalid URL format.');
+        return;
+    }
+
+    try {
+        const response = await fetch(link, { method: 'HEAD' });
+        if (!response.ok) {
+            alert('warning', 'URL does not exist.');
+            return;
+        }
+
+        const contentType = response.headers.get('Content-Type');
+        if (contentType.startsWith('image/')) {
+            value = true;
+        } else {
+            alert('warning', 'URL does not contain an image.');
+        }
+    } catch (error) {
+        alert('warning', 'Error fetching the URL.')
+    }
+
+    return value;
 }
