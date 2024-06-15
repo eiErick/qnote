@@ -6,7 +6,7 @@
     "orientation": "any",
     "scope": "/",
     "short_name": "qnote",
-    "start_url": "/",
+    "start_url": "/qnote/",
     "theme_color": "#ffffff",
     "icons": [
       {
